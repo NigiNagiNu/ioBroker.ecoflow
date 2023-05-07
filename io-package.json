@@ -119,7 +119,8 @@
         "polltime": 30,
         "apikey": "",
         "sn": "",
-        "secretkey": ""
+        "secretkey": "",
+        "offlineLogLevel": "info"
     },
     "objects": [],
     "instanceObjects": [
