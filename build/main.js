@@ -20,16 +20,18 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 var utils = __toESM(require("@iobroker/adapter-core"));
 var import_axios = __toESM(require("axios"));
 class Ecoflow extends utils.Adapter {
+  sn = "";
+  apikey = "";
+  secretkey = "";
+  polltime = 0;
+  timeout = 1e3;
+  adapterIntervals;
+  errorLog = "";
   constructor(options = {}) {
     super({
       ...options,
       name: "ecoflow"
     });
-    this.sn = "";
-    this.apikey = "";
-    this.secretkey = "";
-    this.polltime = 0;
-    this.timeout = 1e3;
     this.on("ready", this.onReady.bind(this));
     this.on("unload", this.onUnload.bind(this));
   }
@@ -99,7 +101,10 @@ class Ecoflow extends utils.Adapter {
           this.setState("info.connection", true, true);
         }
       }).catch((error) => {
-        this.log.error(error.message);
+        if (error.message !== this.errorLog) {
+          this.log.error(error.message);
+          this.errorLog = error.message;
+        }
         this.setState("info.connection", false, true);
       });
     } catch (error) {
