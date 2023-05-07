@@ -14,6 +14,7 @@ class Ecoflow extends utils.Adapter {
     private polltime=0;
     private timeout=1000;
     private adapterIntervals: any; //halten von allen Intervallen
+    private errorLog='';
 
     public constructor(options: Partial<utils.AdapterOptions> = {}) {
         super({
@@ -108,7 +109,10 @@ class Ecoflow extends utils.Adapter {
                     this.setState('info.connection', true, true);
                 }
             }).catch(error => {
-                this.log.error(error.message)
+                if (error.message !== this.errorLog) {
+                    this.log.error(error.message);
+                    this.errorLog = error.message;
+                }
                 this.setState('info.connection', false, true);
             });
         } catch (error: unknown) {
