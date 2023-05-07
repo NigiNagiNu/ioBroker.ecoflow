@@ -8,6 +8,7 @@ declare global {
             sn: string;
             apikey: string;
             secretkey: string;
+            offlineLogLevel: string;
         }
     }
 }

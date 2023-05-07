@@ -97,7 +97,13 @@ class Ecoflow extends utils.Adapter {
                 if (response.data.data === undefined) {
                     if (response.data.code === '6012') {
                         if (!this.offlineFlag) {
-                            this.log.info(response.data.message);
+                            if (this.config.offlineLogLevel === 'info'){
+                                this.log.info(response.data.message);
+                            } else if (this.config.offlineLogLevel === 'warn') {
+                                this.log.warn(response.data.message);
+                            } else {
+                                this.log.error(response.data.message);
+                            }
                             this.offlineFlag=true;
                         }
                     } else {
