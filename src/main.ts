@@ -14,7 +14,7 @@ class Ecoflow extends utils.Adapter {
     private polltime=0;
     private timeout=1000;
     private adapterIntervals: any; //halten von allen Intervallen
-    private errorLog='';
+    private offlineFlag=false;
 
     public constructor(options: Partial<utils.AdapterOptions> = {}) {
         super({
@@ -95,10 +95,18 @@ class Ecoflow extends utils.Adapter {
                 this.log.debug('Get-Data from ecoflow:' + JSON.stringify(response.data));
 
                 if (response.data.data === undefined) {
+                    if (response.data.code === '6012') {
+                        if (!this.offlineFlag) {
+                            this.log.warn(response.data.message);
+                            this.offlineFlag=true;
+                        }
+                    } else {
+                        this.log.error(response.data.message);
+                    }
                     //API returned always 200 but error message
-                    this.log.error(response.data.message);
                     this.setState('info.connection', false, true);
                 } else {
+                    this.offlineFlag=false;
                     //Global status Items
                     await this.setStateAsync('status.soc', { val: response.data.data.soc, ack: true });
                     await this.setStateAsync('status.remainTime', { val: response.data.data.remainTime, ack: true });
@@ -109,10 +117,7 @@ class Ecoflow extends utils.Adapter {
                     this.setState('info.connection', true, true);
                 }
             }).catch(error => {
-                if (error.message !== this.errorLog) {
-                    this.log.error(error.message);
-                    this.errorLog = error.message;
-                }
+                this.log.error(error.message);
                 this.setState('info.connection', false, true);
             });
         } catch (error: unknown) {
