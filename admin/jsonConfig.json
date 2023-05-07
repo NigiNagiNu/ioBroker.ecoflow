@@ -59,7 +59,7 @@
           "offlineCyclicCheck": {
             "newLine": false,
             "type": "checkbox",
-            "label": "Cyclic Offline Check:",
+            "label": "Cyclic Offline Check",
             "sm": 12,
             "md": 6,
             "lg": 2
