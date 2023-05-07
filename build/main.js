@@ -90,7 +90,7 @@ class Ecoflow extends utils.Adapter {
         this.log.debug("Get-Data from ecoflow:" + JSON.stringify(response.data));
         if (response.data.data === void 0) {
           if (response.data.code === "6012") {
-            if (!this.offlineFlag || this.config.offlineCyclicCheck == true) {
+            if (!this.offlineFlag || this.config.offlineCyclicCheck === true) {
               if (this.config.offlineLogLevel === "info") {
                 this.log.info(response.data.message);
               } else if (this.config.offlineLogLevel === "warn") {
