@@ -120,7 +120,8 @@
         "apikey": "",
         "sn": "",
         "secretkey": "",
-        "offlineLogLevel": "info"
+        "offlineLogLevel": "error",
+        "offlineCyclicCheck": true
     },
     "objects": [],
     "instanceObjects": [

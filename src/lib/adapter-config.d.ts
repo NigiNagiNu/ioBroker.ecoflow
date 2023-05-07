@@ -9,6 +9,7 @@ declare global {
             apikey: string;
             secretkey: string;
             offlineLogLevel: string;
+            offlineCyclicCheck: boolean;
         }
     }
 }

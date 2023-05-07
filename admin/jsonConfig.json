@@ -54,7 +54,15 @@
             "label": "Offline Log Level:",
             "sm": 12,
             "md": 6,
-            "lg": 3
+            "lg": 4
+          },
+          "offlineCyclicCheck": {
+            "newLine": false,
+            "type": "checkbox",
+            "label": "Cyclic Offline Check:",
+            "sm": 12,
+            "md": 6,
+            "lg": 2
           },
           "_spacer": {
             "type": "divider",
