@@ -6,14 +6,14 @@
     "name": "Newan",
     "email": "info@newan.de"
   },
-  "homepage": "https://github.com/Newan/ioBroker.ecoflow",
+  "homepage": "https://github.com/NigiNagiNu/ioBroker.ecoflow",
   "license": "MIT",
   "keywords": [
     "ecoflow powerstation"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Newan/ioBroker.ecoflow.git"
+    "url": "https://github.com/NigiNagiNu/ioBroker.ecoflow.git"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.6.8",
@@ -74,7 +74,7 @@
     "release": "release-script"
   },
   "bugs": {
-    "url": "https://github.com/Newan/ioBroker.ecoflow/issues"
+    "url": "https://github.com/NigiNagiNu/ioBroker.ecoflow/issues"
   },
   "readmeFilename": "README.md"
 }

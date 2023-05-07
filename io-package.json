@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "ecoflow",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "news": {
+            "0.0.5": {
+                "en": "configure device offline logging"
+            },
             "0.0.4": {
                 "en": "update for latest-repository",
                 "de": "Update für neuestes Repository",
